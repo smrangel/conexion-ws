@@ -1,0 +1,25 @@
+{
+"usuarios":[
+	
+	{
+		"titulo":512312312,
+		"tema":"filosofia",
+		"cargo":"gerente"
+	},
+	{
+		"titulo":1241,
+		"tema":"matematicas",
+		"cargo":"coord"
+	},
+	{
+		"titulo":5612,
+		"tema":"filosofia",
+		"cargo":"cajero"
+	},
+	{
+		"titulo":23623,
+		"tema":"geografia",
+		"cargo":"gerente"
+	}
+]
+}
