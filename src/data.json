@@ -1,25 +1,19 @@
 {
 "usuarios":[
-	
 	{
-		"titulo":512312312,
-		"tema":"filosofia",
-		"cargo":"gerente"
+		"id":12312,"x":2,"y":6
 	},
 	{
-		"titulo":1241,
-		"tema":"matematicas",
-		"cargo":"coord"
+		"id":1346,"x":4,"y":2
 	},
 	{
-		"titulo":5612,
-		"tema":"filosofia",
-		"cargo":"cajero"
+		"id":436,"x":1,"y":6
 	},
 	{
-		"titulo":23623,
-		"tema":"geografia",
-		"cargo":"gerente"
+		"id":5684,"x":7,"y":3
+	},
+	{
+		"id":312,"x":1,"y":9
 	}
 ]
 }

@@ -1,14 +1,20 @@
+const {Schema,model} = require('mongoose');
+const ust = new Schema({id:Number,x:Number,y:Number});
+
+export default model('user',ust);
+/*
+console.log("hola");
 //MODELO DE mongodb
-module.exports =function(app,mongoose,express){
+module.exports =function(mongoose){
 const ust = new mongoose.Schema({name:String,position:{x:Number,y:Number}});
-const Usuario = mongoose.model('users',ust);
+export default mongoose.model('user',ust);
 	mongoose.connect("mongodb+srv://mrangel:marc1928MA@integracion-nodejs.hqcyo.mongodb.net/dynamicinfo?retryWrites=true&w=majority",
 		{useNewUrlParser: true, useUnifiedTopology: true},()=>{
 		console.log("se conecto a mongodb");
-		
-		app.get('/buscar/:name',async(req, res) => {
-			const name = req.params.name;
-			console.log(name);
+		/*
+		app.get('/buscar/',async(req, res) => {
+			//const name = req.params.name;
+			//console.log(name);
 			const us = await Usuario.find(function (err, kittens) {
   				if (err) return console.error(err);
   				console.log(kittens);
@@ -49,7 +55,7 @@ const Usuario = mongoose.model('users',ust);
 						user:delette
 					}
 				});
-		});
+		});*//*
 	});
 }
 	
@@ -65,4 +71,4 @@ const Usuario = mongoose.model('users',ust);
 	//io.emit(req.body);
 	// curl http://localhost:3000/viral -d '{"a":12,"b":{"c":12,"d":15},"k":176}' -H 'Content-Type:application/json'
 	//console.log("Se accedio a la pagina 2)");
-	
+	*/

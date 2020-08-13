@@ -1,19 +1,31 @@
 const {usuarios} = require("./data.json");
 
-module.exports =function(app,graphqlHTTP,buildSchema){
+module.exports =function(app,graphqlHTTP,schema){
 //console.log(usuarios);
+/*const typedef=``;
+const resolvers ={};
 const schema = buildSchema(`
 	type Query {
 		us(titulo:Int!):usuarios
 		temas(tema:String!):[usuarios]
 		hello:String
+		tasks:[usuarios]
 	}
+
+	
 	type usuarios{
 		titulo:Int
 		tema:String
 		cargo:String
 	}
-
+	input newusuarios{
+		titulo:Int
+		tema:String
+		cargo:String
+	}
+	type Mutation{
+		creart(input: newusuarios):usuarios 
+	}
 	`);
 
 let obtuser = (args) => {
@@ -35,17 +47,32 @@ let titulos = (args)=>{
 		});
 	}
 }
-
+let elemt = (args) =>{
+	return usuarios;
+}
+let create = (args) =>{
+	console.log(usuarios);
+	console.log("/////////////");
+	console. log ( JSON.parse ( JSON.stringify ( args ) ) );
+	usuarios.push(args);
+	console.log(usuarios);
+	return args;
+}*/
 const root = {
-	us: obtuser,
-	temas: titulos, 
-	hello :'Hello worasdasd!',
-  	bye:'adios!'
+/*
+		tasks: elemt,
+		us: obtuser,
+		temas: titulos, 
+		hello :'Hello worasdasd!',
+	  	bye:'adios!',
+ 		creart:create
+ 	*/
+
 }
 
 app.use('/graphql',graphqlHTTP({
 	graphiql:true,
 	schema:schema,
-	rootValue:root
+	//rootValue:root
 }));
 }

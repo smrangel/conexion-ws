@@ -4,8 +4,8 @@
   "description": "test app",
   "main": "prueba.js",
   "scripts": {
-    "dev": "nodemon src/prueba.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/prueba.js --exec babel-node",
+    "build":"babel src -d dist --source-maps"
   },
   "author": "Mrangel",
   "license": "ISC",
@@ -19,6 +19,10 @@
     "socket.io": "^2.3.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.1",
+    "@babel/node": "^7.10.5",
+    "@babel/preset-env": "^7.11.0",
     "nodemon": "^2.0.4"
   }
 }
