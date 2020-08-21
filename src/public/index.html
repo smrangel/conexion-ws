@@ -1,5 +1,200 @@
 <html>
-<h1>hola mundo 1231231</h1>
+<h3>Indicadores Globales</h3>
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
-<script>io();</script>
+<script src="three.module.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r76/three.min.js "></script >
+<style>body{margin:0;overflow:hidden;background-color:rgb(0,0,70);}#input{position:relative;left:20em;}h3{position:relative;left:20em;color:white;}</style>
+<div id="input">
+	<input type="text" id="mensaje" name="mensaje">
+	<button id="send">buscar</button> 
+</div>
+
+<div id="render"></div>
+	<div>
+<script type="text/javascript">
+Render=new THREE.WebGLRenderer();
+//Tamaño del render(resultado)
+Render.setSize(800,600);
+//Se agrega el render al documento html
+document.getElementById('render').appendChild(Render.domElement);
+
+//El escenario
+Escenario=new THREE.Scene();
+
+//La cámara
+Camara=new THREE.PerspectiveCamera();
+//Acercamos la cámara en z es profundidad para ver el punto
+Camara.position.z=100;
+//agregando la cámara al escenario
+Escenario.add(Camara);
+// Geometría
+Geometria=new THREE.Geometry();
+// vector a dibujar
+var vertices=[	
+	[-1.0, -1.0,  1.0],
+	[ 1.0, -1.0,  1.0],
+	[ 1.0,  1.0,  1.0],
+	[-1.0,  1.0,  1.0]];
+var long_vertices=vertices.length;
+for(i=0;i<long_vertices;i++){
+    x=vertices[i][0];
+    y=vertices[i][1];
+    z=vertices[i][2];
+    //Agregamos vértices al vector
+    Vector=new THREE.Vector3(x,y,z);
+    //Agregamos el vector a la geometría
+    Geometria.vertices.push(Vector);   
+    }
+// agregamos un material para que el punto tenga color
+Material=new THREE.ParticleBasicMaterial({color:0XFF0000});
+// creamos una partícula con la geometría y el material
+Figura=new THREE.Points(Geometria,Material);
+// agregamos la partícula al escenario
+Escenario.add(Figura);
+// agregamos todo el escenario y la cámara al render
+Render.render(Escenario,Camara);
+</script>
+<!-- 	<script type="text/javascript">
+		var camera, scene, renderer;
+var geometry, material, mesh;
+var clock;
+ 
+function init() {
+renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+scene = new THREE.Scene();
+geometry = new THREE.CubeGeometry( 1, 1, 1 );
+material = new THREE.MeshLambertMaterial({color:0xff0000,wireframe:false,transparent:true, opacity:0.3});
+mesh = new THREE.Mesh( geometry,material);
+scene.add( mesh );
+
+camera = new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,100 );
+camera.position.set(1.2,1.2,1.2);
+camera.lookAt(mesh.position);
+clock = new THREE.Clock();
+
+var ambient = new THREE.AmbientLight(0xffffff,0.3);
+        scene.add(ambient);
+        var light = new THREE.DirectionalLight(0xffffff, 1, 100, 2 );
+        light.position.set(10,20 , 20); 
+        light.castShadow = true;
+        scene.add(light);
+
+
+/*
+var geometry = new THREE.Geometry();
+
+geometry.vertices.push(
+	new THREE.Vector3( -1,  1, 0 ),
+	new THREE.Vector3( -10, -10, 0 ),
+	new THREE.Vector3(  10, -10, 0 )
+);
+*/
+
+var geometry = new THREE.BufferGeometry();
+var vertices = new Float32Array( [
+	-1.0, -1.0,  1.0,
+	 1.0, -1.0,  1.0,
+	 1.0,  1.0,  1.0,
+
+	 1.0,  1.0,  1.0,
+	-1.0,  1.0,  1.0,
+	-1.0, -1.0,  1.0
+] );
+function generarpuntos(){	
+	var positions = new Float32Array(64*3);
+	var colors = new Float32Array(64*3);
+	for ( var i = 0; i < 64; i ++ ) {
+					for ( var j = 64; j < length; j ++ ) {
+						var p = i/5;
+						positions[3*k]=p;
+						positions[3*k+1]=p;
+						positions[3*k+2]=p;
+						colors[i]= new THREE.Color(1,0,0);
+					}
+		}
+	geometry.addAttribute('position', new THREE.BufferAttribute( positions, 3 ) );
+	geometry.addAttribute( 'color', new THREE.BufferAttribute( colors, 3 ) );
+	/*geometry.position =function() {
+    	new THREE.BufferAttribute(positions,3);};
+	geometry.color = function() {
+    	new THREE.BufferAttribute(colors,3);};*/
+	geometry.computeBoundingBox();
+	var col = new THREE.Color(1,0,0);
+	positions[3] = 125;
+	var Material = new THREE.PointsMaterial( { size: 0.05, vertexColors: true } );
+	return new THREE.Points( geometry, material );
+}
+var pcBuffer =generarpuntos();
+console.log(pcBuffer);
+scene.add(pcBuffer);
+
+Geometria=new THREE.Geometry();
+Vector=new THREE.Vector3(0,.4,0);
+Vector1=new THREE.Vector3(0.7,.7,0.7);
+Vector2=new THREE.Vector3(0,.7,0.7);
+Vector3=new THREE.Vector3(0,.3,0);
+Vector4=new THREE.Vector3(.1,0,0);
+Vector5=new THREE.Vector3(.2,0,0);
+Vector6=new THREE.Vector3(.3,0,0);
+Vector7=new THREE.Vector3(.7,0,0);
+Vector8=new THREE.Vector3(.7,.7,0);
+Vector9=new THREE.Vector3(0,0,.2);
+Vector11=new THREE.Vector3(0,0,.3);
+Vector12=new THREE.Vector3(0,0,.4);
+Geometria.vertices.push(Vector,Vector1,Vector2,Vector3,Vector5,Vector4,Vector6,Vector7,Vector8,Vector9,Vector11,Vector12);
+Material=new THREE.ParticleBasicMaterial({size:0.01,color:0XFF0000});
+Particula=new THREE.ParticleSystem(Geometria,Material);
+scene.add(Particula);
+
+window.addEventListener( 'resize', onWindowResize, false );
+if (mesh.position.x > 2) {
+dir=-1;
+} else if (mesh.position.x < - 2)  {
+dir=1;
+}
+renderer.render( scene, camera );
+}
+
+
+function onWindowResize() {
+windowHalfX = window.innerWidth / 2;
+windowHalfY = window.innerHeight / 2;
+camera.aspect = window.innerWidth / window.innerHeight;
+camera.updateProjectionMatrix();
+renderer.setSize( window.innerWidth, window.innerHeight );
+}
+
+
+init();
+
+	</script>	 -->
+</div>
+<script> 
+	const socket= io();
+	var btn = document.getElementById('send');
+	var mensaje =document.getElementById('mensaje');
+	socket.on('chat message',(data) => {
+			console.log(data)
+		}
+	);
+	socket.on('id',(data) => {
+			console.log(data);
+			if(data===4){
+				io
+				io.of('myNamespace').emit('event','message');
+			}
+		}
+	);
+
+	btn.addEventListener('click',function(){
+		socket.emit('mensaje',mensaje.value);
+		console.log("click");
+		socket.on('mensaje',(data) => {
+			console.log("mensaje reenviado"+data);});
+		socket.emit('grupo',socket.id);
+	});
+</script>
+
 </html>

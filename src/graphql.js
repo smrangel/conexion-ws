@@ -1,6 +1,19 @@
 const {usuarios} = require("./data.json");
+const time=require('./time.js');
+
 
 module.exports =function(app,graphqlHTTP,schema){
+var a=12;
+var b=162;
+var x= a+b;
+time.time.x("hola");
+ /*
+   datos que se guardan en mongoDB.js
+   parametros que se le pasan a resolvers.js a traves de context
+   enlaze con socket.js
+ X datos de time.js
+ */
+
 //console.log(usuarios);
 /*const typedef=``;
 const resolvers ={};
@@ -11,8 +24,6 @@ const schema = buildSchema(`
 		hello:String
 		tasks:[usuarios]
 	}
-
-	
 	type usuarios{
 		titulo:Int
 		tema:String
@@ -27,7 +38,6 @@ const schema = buildSchema(`
 		creart(input: newusuarios):usuarios 
 	}
 	`);
-
 let obtuser = (args) => {
 	console.log(args);
 	let titulo = args.titulo;
@@ -70,9 +80,13 @@ const root = {
 
 }
 
-app.use('/graphql',graphqlHTTP({
-	graphiql:true,
-	schema:schema,
-	//rootValue:root
-}));
+	app.use('/graphql',graphqlHTTP({
+		graphiql:true,
+		schema:schema,
+		context:{
+			messajeId:x,
+			Id:"23"
+		//rootValue:root
+		}
+	}));
 }

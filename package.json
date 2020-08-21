@@ -5,7 +5,7 @@
   "main": "prueba.js",
   "scripts": {
     "dev": "nodemon src/prueba.js --exec babel-node",
-    "build":"babel src -d dist --source-maps"
+    "build": "babel src -d dist --source-maps"
   },
   "author": "Mrangel",
   "license": "ISC",
@@ -16,6 +16,7 @@
     "graphql": "^15.3.0",
     "graphql-tools": "^6.0.14",
     "mongoose": "^5.9.23",
+    "os-utils": "0.0.14",
     "socket.io": "^2.3.0"
   },
   "devDependencies": {

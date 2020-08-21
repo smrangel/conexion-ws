@@ -1,6 +1,7 @@
 const {usuarios} = require("./data.json");
 import user from "./mongodb.js";
 
+
 //const mongo=require('./mongodb.js')(mongoose);
 
 
@@ -26,7 +27,7 @@ let create = (args) => {
 
 export const resolvers ={
 	Query:{
-		hello:()=>{ console.log("hola");return 'Hello worasdasd!'},
+		hello(on,tor,context,pon){ console.log(context);return 'Hello worasdasd!'},
 		tasks:elem,
 		us:obtuser,
 		
